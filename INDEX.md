@@ -1,0 +1,274 @@
+# Docs
+
+- [Getting started with TofuPilot](/docs/getting-started-with-tofupilot): Deploy your first test procedure on TofuPilot in two steps: clone a ready-made template to your git provider, then deploy it to a new test station.
+- Fundamental Concepts
+  - [TofuPilot fundamental concepts](/docs/fundamentals): The three concepts TofuPilot is built on: the test lifecycle, the data model linking runs and measurements, and the units that trace each run to hardware.
+  - [Test Lifecycle](/docs/fundamentals/lifecycle): Follow a hardware test through all four stages on TofuPilot: author the procedure, deploy it to a station, run it on the line, and analyze the results.
+  - [Test Data Model](/docs/fundamentals/test-data-model): The data model behind every run: phases, typed measurements, aggregations, validators, logs, and attachments.
+  - [Device Data Model](/docs/fundamentals/device-data-model): Trace every test run back to the physical hardware it came from, using the parts, revisions, batches, units, and sub-units that make up the device data model.
+- Supported Frameworks
+  - [Frameworks on TofuPilot](/docs/frameworks): Run OpenHTF, pytest, or Robot Framework on TofuPilot, or build your own connector with the Python, C#, C++, Rust, and MATLAB SDKs.
+  - TofuPilot Framework
+    - [TofuPilot Framework](/docs/frameworks/tofupilot): Learn how to author a TofuPilot procedure in a single YAML file and run it with the CLI, with native support for phases, measurements, plugs, and operator UI.
+    - [Procedures](/docs/frameworks/tofupilot/procedures): Define complete hardware test workflows with phases, measurements, and configurations. Structure reusable test procedures with TofuPilot Framework.
+    - Phases
+      - [Phases](/docs/frameworks/tofupilot/phases): Break down your TofuPilot test into distinct phases that run Python functions, shell commands, and operator UI interactions.
+      - [Python](/docs/frameworks/tofupilot/phases/python): Run Python functions as TofuPilot test phases with full access to measurements, attachments, logging, and operator UI controls.
+      - [Executable](/docs/frameworks/tofupilot/phases/executable): Execute shell commands, scripts, and compiled binaries as test phases to integrate external tools into your TofuPilot procedures.
+      - [Depends On](/docs/frameworks/tofupilot/phases/depends-on): Define dependencies between test phases to control execution order and skip downstream phases when prerequisites fail in TofuPilot.
+      - [Setup / Teardown](/docs/frameworks/tofupilot/phases/setup-teardown): Define setup and teardown stages for TofuPilot test phases to handle hardware initialization, calibration, and resource cleanup.
+      - [Timeout](/docs/frameworks/tofupilot/phases/timeout): Set configurable timeouts on TofuPilot test phases to prevent indefinite execution and ensure consistent test cycle times.
+      - [Retry](/docs/frameworks/tofupilot/phases/retry): Configure automatic retry limits and delays between failed phase attempts to handle intermittent failures in TofuPilot test runs.
+      - [Enable / Disable](/docs/frameworks/tofupilot/phases/enable-disable): Enable or disable individual phases in TofuPilot test procedures to skip steps during runs without deleting them from your code.
+    - Measurements
+      - [Measurements](/docs/frameworks/tofupilot/measurements): Capture and validate structured measurement results within your test phases. Define limits, units, and validators to catch failures automatically.
+      - [Numeric](/docs/frameworks/tofupilot/measurements/numeric): Record numeric measurement values with minimum and maximum range validation for hardware test parameters in TofuPilot procedures.
+      - [String](/docs/frameworks/tofupilot/measurements/string): Record string measurement values with regex pattern validation for firmware versions, serial formats, and labels in TofuPilot.
+      - [Boolean](/docs/frameworks/tofupilot/measurements/boolean): Record boolean measurement values with pass/fail equality validation for connectivity and presence checks in TofuPilot procedures.
+      - [JSON](/docs/frameworks/tofupilot/measurements/json): Record structured JSON object and array measurement values to capture rich device state, config snapshots, and diagnostics in TofuPilot procedures.
+      - [Multi-Dimensional](/docs/frameworks/tofupilot/measurements/multi-dimensional): Record multi-dimensional measurement data with axis validators and aggregations for complex sensor and signal analysis in TofuPilot.
+      - [Aggregations](/docs/frameworks/tofupilot/measurements/aggregations): Validate statistics on measurement data with custom aggregation types like average, standard deviation, and Cpk in TofuPilot.
+    - Operator UI
+      - [Operator UI](/docs/frameworks/tofupilot/operator-ui): Create interactive operator interfaces in TofuPilot with input prompts, visual feedback, and real-time status displays for production testing.
+      - [Text Input](/docs/frameworks/tofupilot/operator-ui/text-input): Prompt the operator to enter single-line text during test execution for serial numbers, labels, or identifiers in TofuPilot.
+      - [Number Input](/docs/frameworks/tofupilot/operator-ui/number-input): Prompt the operator to enter a numeric value during test execution using a validated number input field in TofuPilot.
+      - [Switch](/docs/frameworks/tofupilot/operator-ui/switch): Prompt the operator with a toggle switch for true/false decisions during test execution for pass/fail checks in TofuPilot.
+      - [Textarea](/docs/frameworks/tofupilot/operator-ui/textarea): Prompt the operator to enter multi-line text during test execution for notes, observations, or failure descriptions in TofuPilot.
+      - [Slider](/docs/frameworks/tofupilot/operator-ui/slider): Prompt the operator to set a numeric value using a visual slider control during test execution for calibration in TofuPilot.
+      - [Radio](/docs/frameworks/tofupilot/operator-ui/radio): Prompt the operator to choose one option from a set of mutually exclusive radio buttons during test execution in TofuPilot.
+      - [Checklist](/docs/frameworks/tofupilot/operator-ui/checklist): Prompt the operator to check off multiple items from a list during test execution for step-by-step verification in TofuPilot.
+      - [Select](/docs/frameworks/tofupilot/operator-ui/select): Prompt the operator to choose one option from a dropdown list during test execution for configuration or classification in TofuPilot.
+      - [Multi-Select](/docs/frameworks/tofupilot/operator-ui/multiselect): Prompt the operator to select multiple options from a dropdown list during test execution for multi-criteria input in TofuPilot.
+      - [Text](/docs/frameworks/tofupilot/operator-ui/text): Display read-only text that updates dynamically during test execution to show status messages and results in TofuPilot.
+      - [Image](/docs/frameworks/tofupilot/operator-ui/image): Display static or dynamically updating images in the TofuPilot operator UI for visual instructions and live test feedback.
+      - [Progress](/docs/frameworks/tofupilot/operator-ui/progress): Display a real-time progress bar during test execution to keep operators informed of completion status in TofuPilot.
+    - [Unit Under Test (UUT)](/docs/frameworks/tofupilot/unit-under-test): Identify hardware units under test with serial numbers, part numbers, and sub-unit assemblies for full traceability in TofuPilot.
+    - [Plugs](/docs/frameworks/tofupilot/plugs): Create persistent resources like equipment drivers and database connections for your test phases to access. Reuse plugs across procedures.
+    - [Logs](/docs/frameworks/tofupilot/logs): Log structured messages during test execution for debugging, traceability, and post-run analysis of TofuPilot test procedures.
+    - [Attachments](/docs/frameworks/tofupilot/attachments): Attach images, PDFs, CSV files, and binary data to test reports during execution for traceability and failure analysis in TofuPilot.
+    - Execution
+      - [Execution](/docs/frameworks/tofupilot/execution): Configure how TofuPilot executes your test procedures, including phase order, failure handling, and parallel execution strategies.
+      - [On Fail](/docs/frameworks/tofupilot/execution/callbacks): Define callback functions to control what happens when test phases fail, including custom error handling and recovery logic in TofuPilot.
+      - [Workers](/docs/frameworks/tofupilot/execution/workers): Configure worker threads to run multiple test phases in parallel, improving throughput for independent measurements in TofuPilot.
+      - [Slots](/docs/frameworks/tofupilot/execution/slots): Configure multiple test slots to run identical procedures in parallel on separate units, maximizing station throughput in TofuPilot.
+      - [Strategy](/docs/frameworks/tofupilot/execution/strategy): Choose sequential or parallel execution strategies for test phases and slots to optimize throughput in TofuPilot procedures.
+      - [Debugging](/docs/frameworks/tofupilot/execution/debugging): Learn how to debug Python phase code in TofuPilot by attaching a debugger like VS Code, using debug mode or a manual debugpy listener with breakpoints.
+    - [Reports](/docs/frameworks/tofupilot/reports): Access TofuPilot test run results in the dashboard or stream them as JSON events from the CLI for programmatic consumption.
+    - Environments
+      - [Environments](/docs/frameworks/tofupilot/environments): Choose between Studio, Station, and CLI environments to develop, debug, and deploy your TofuPilot test procedures.
+      - [Development](/docs/frameworks/tofupilot/environments/development): Install the TofuPilot CLI and run procedures locally in development mode with a live operator UI while you build and debug your test.
+      - [Station](/docs/frameworks/tofupilot/environments/station): Run the TofuPilot CLI as a station service on the factory floor, with deployed procedures, a live operator UI, and automatic report upload.
+    - [Monorepos](/docs/frameworks/tofupilot/monorepos): Learn how to organize one or many TofuPilot procedures in the same repository with shared phases and plugs.
+  - [OpenHTF on TofuPilot](/docs/frameworks/openhtf): Learn how to run existing OpenHTF suites through TofuPilot so phase outcomes, measurements, logs, and attachments upload to the dashboard automatically.
+  - [Pytest on TofuPilot](/docs/frameworks/pytest): Learn how to run an existing pytest suite through TofuPilot so each test becomes a phase and asserts promote to measurements automatically.
+  - [Robot Framework on TofuPilot](/docs/frameworks/robot-framework): Learn how to run a Robot Framework suite through TofuPilot so test cases become phases and Measure keywords preserve limits end to end.
+- [Incremental Migration](/docs/incremental-migration): Learn how to migrate an existing test suite to TofuPilot one procedure, one station, or one product line at a time, with zero downtime.
+- API & SDKs
+  - [API & SDKs](/docs/api): Learn how to call TofuPilot from any language with first-party SDKs for Python, C#, Rust, C++, and MATLAB, or directly through the REST API.
+  - [Python SDK](/docs/sdk/python)
+  - [C# SDK](/docs/sdk/csharp)
+  - [Rust SDK](/docs/sdk/rust)
+  - [C++ SDK](/docs/sdk/cpp)
+  - [MATLAB SDK](/docs/sdk/matlab)
+  - REST API
+    - [REST API](/docs/api/rest-api): Call the TofuPilot REST API directly to drive runs, units, procedures, and stations from any environment.
+    - Attachments
+      - [Initialize upload](/docs/api/rest-api/attachments/create): Get a pre-signed URL to upload a file. Returns the upload ID and URL. PUT the file to the URL, then call Finalize upload.
+      - [Finalize upload](/docs/api/rest-api/attachments/create_finalize): Finalize a file upload after uploading to the pre-signed URL. Validates the file and records its metadata.
+    - Batches
+      - [Create batch](/docs/api/rest-api/batches/create): Create an empty batch. Batch numbers match case-insensitively ("BATCH-001" == "batch-001").
+      - [Get batch](/docs/api/rest-api/batches/get): Get a batch by number, with its units, serial numbers, and part revisions.
+      - [List and filter batches](/docs/api/rest-api/batches/list): List batches with their units, serial numbers, and part revisions. Cursor-paginated.
+      - [Update batch](/docs/api/rest-api/batches/update): Rename a batch. The current number matches case-insensitively.
+      - [Delete batch](/docs/api/rest-api/batches/delete): Delete a batch by number. Linked units are unlinked, not deleted.
+    - Deployments
+      - [Get deployment](/docs/api/rest-api/deployments/get): Get a deployment by ID, with its artifact metadata, commit, creator, and per-station push state.
+      - [List and filter deployments](/docs/api/rest-api/deployments/list): List deployments with filtering by procedure, environment, build status, branch, author, and date range. Cursor-paginated.
+    - Imports
+      - [Import runs from structured files](/docs/api/rest-api/imports/create_structured): Import one or more previously uploaded structured files (OpenHTF, WATS WSJF/WSXF, ATML, NI TestStand, STDF, or ATDF) in a single call. Each file is parsed independently and its result returned per-item, so one bad file does not fail the others. A file that contains several units (a multi-part STDF/ATDF datalog or a multi-report WSXF/TestStand document) creates one run per unit; all run ids are returned in the item’s `ids`.
+      - [Import a run from a tabular file](/docs/api/rest-api/imports/create_tabular): Import a previously uploaded tabular file (CSV or Excel) by mapping its columns to TofuPilot fields. Provide exactly one of `mapping` (an inline column mapping) or `template_id` (a mapping template saved in the dashboard). The `procedure_id` is required and overrides any procedure referenced in the file.
+    - Logs
+      - [Get log](/docs/api/rest-api/logs/get): Get a single log entry by ID, with its run and unit context.
+      - [List and filter logs](/docs/api/rest-api/logs/list): List logs with filtering by run, procedure, level, date range, unit, and source. Cursor-paginated.
+    - Measurements
+      - [Get measurement](/docs/api/rest-api/measurements/get): Get a single measurement by ID, with its value, validators, and run context.
+      - [List and filter measurements](/docs/api/rest-api/measurements/list): List measurements for a procedure with filtering by phase, measurement, value, outcome, date range, unit, and run details. Cursor-paginated.
+    - Parts
+      - [Create part](/docs/api/rest-api/parts/create): Create a part, optionally with an initial revision. Part numbers match case-insensitively ("PART-001" == "part-001").
+      - [Get part](/docs/api/rest-api/parts/get): Get a part by number, with its revisions, metadata, and linked units. Numbers match case-insensitively.
+      - [List and filter parts](/docs/api/rest-api/parts/list): List parts. Filter and search by name, number, or revision number. Cursor-paginated.
+      - [Update part](/docs/api/rest-api/parts/update): Update a part's number or name. Numbers match case-insensitively.
+      - [Delete part](/docs/api/rest-api/parts/delete): Delete a part and all its revisions. Irreversible.
+      - Revisions
+        - [Create part revision](/docs/api/rest-api/parts/revisions/part_number_revisions_create): Create a revision of a part. Revision numbers match case-insensitively ("REV-A" == "rev-a").
+        - [Get part revision](/docs/api/rest-api/parts/revisions/part_number_revisions_revision_number_get): Get a part revision by part number and revision number, with its metadata, configuration, and linked units.
+        - [Update part revision](/docs/api/rest-api/parts/revisions/part_number_revisions_revision_number_update): Update a revision's number or image.
+        - [Delete part revision](/docs/api/rest-api/parts/revisions/part_number_revisions_revision_number_delete): Delete a part revision. Irreversible.
+    - Phases
+      - [Get phase](/docs/api/rest-api/phases/get): Get a single phase by ID, with its measurements and run context.
+      - [List and filter phases](/docs/api/rest-api/phases/list): List phases for a procedure with filtering by outcome, date range, unit, and run details. Cursor-paginated.
+    - Procedures
+      - [Create procedure](/docs/api/rest-api/procedures/create): Create a procedure to group and track related runs.
+      - [Get procedure](/docs/api/rest-api/procedures/get): Get a procedure by ID, with recent runs, linked stations, and version history.
+      - [List and filter procedures](/docs/api/rest-api/procedures/list): List procedures with filtering and search. Includes creator and linked repository. Cursor-paginated.
+      - [Update procedure](/docs/api/rest-api/procedures/update): Update a procedure's name or configuration. Only provided fields are changed.
+      - [Delete procedure](/docs/api/rest-api/procedures/delete): Delete a procedure and all its runs, phases, measurements, and attachments. Irreversible.
+      - Versions
+        - [Create procedure version](/docs/api/rest-api/procedures/versions/create): Create a version of a procedure. Versions snapshot procedure configuration over time.
+        - [Get procedure version](/docs/api/rest-api/procedures/versions/get): Get a procedure version by tag, with its metadata and configuration.
+        - [Delete procedure version](/docs/api/rest-api/procedures/versions/delete): Delete a procedure version by tag. Irreversible.
+    - Runs
+      - [Create run](/docs/api/rest-api/runs/create): Create a run linked to a procedure and unit. Existing procedures and units are reused automatically.
+      - [Attach file to run](/docs/api/rest-api/runs/attach_create): Attach a file to a run. Returns an upload ID and pre-signed URL; PUT the file to the URL, then call Finalize upload to commit.
+      - [Get run](/docs/api/rest-api/runs/get): Get a run by ID, with its metadata, phases, measurements, and logs.
+      - [List and filter runs](/docs/api/rest-api/runs/list): List runs with filtering by unit, procedure, date range, outcome, and station. Cursor-paginated.
+      - [Update run](/docs/api/rest-api/runs/update): Link uploaded files to a run. Upload files via Initialize and Finalize first, then call this to attach them.
+      - [Update run metadata](/docs/api/rest-api/runs/update_metadata): Upsert custom metadata on a run as a key/value object. Omitted keys are preserved; pass `null` to delete a key.
+      - [Delete runs](/docs/api/rest-api/runs/delete): Delete runs by ID. Also removes their phases, measurements, and attachments. Irreversible.
+    - Stations
+      - [Create station](/docs/api/rest-api/stations/create): Create a station to register production equipment and link it to procedures.
+      - [Get station](/docs/api/rest-api/stations/get): Get a station by ID, with its linked procedures and recent activity.
+      - [Get current station](/docs/api/rest-api/stations/get_current): Get the station the request is authenticated as, with its linked procedures.
+      - [List and filter stations](/docs/api/rest-api/stations/list): List stations. Search by name and filter by status. Cursor-paginated.
+      - [Update station](/docs/api/rest-api/stations/update): Update a station name and/or image. Pass an empty string for image_id to remove the image.
+      - [Remove station](/docs/api/rest-api/stations/delete): Remove a station. Deleted if unused; archived (history preserved) if runs reference it.
+    - Units
+      - [Create unit](/docs/api/rest-api/units/create): Create a unit with a serial number and link it to a part revision.
+      - [Attach file to unit](/docs/api/rest-api/units/attach_create): Attach a file to a unit. Returns an upload ID and pre-signed URL; PUT the file to the URL, then call Finalize upload to commit.
+      - [Get unit](/docs/api/rest-api/units/get): Get a unit by serial number, with its part, parent/child links, and run history.
+      - [List and filter units](/docs/api/rest-api/units/list): List units with filtering by serial number, part number, and batch. Cursor-paginated.
+      - [Update unit](/docs/api/rest-api/units/update): Update a unit: serial number, part revision, batch, and file attachments.
+      - [Delete units](/docs/api/rest-api/units/delete): Delete units by serial number. Sub-units are unlinked, not deleted. Irreversible.
+      - [Delete unit attachments](/docs/api/rest-api/units/attach_delete): Delete attachments from a unit by ID. Removes the files from storage and unlinks them.
+      - Sub-units
+        - [Add sub-unit](/docs/api/rest-api/units/sub-units/add_child): Link a sub-unit to a parent unit to track assemblies.
+        - [Remove sub-unit](/docs/api/rest-api/units/sub-units/remove_child): Unlink a sub-unit from its parent. Neither unit is deleted.
+    - Users
+      - [List users](/docs/api/rest-api/users/list): List users in your organization. Set `current=true` to return only the authenticated user.
+
+- **Separator**
+- Access
+  - [Access](/docs/access): Learn how to manage who can sign in to your TofuPilot organization, what they can do, and how they authenticate across users, access groups, and stations.
+  - [Access Roles](/docs/access/access-roles): Learn how the five TofuPilot access roles control what every member can read and write, and how access groups layer on top to scope visibility.
+  - [Access Groups](/docs/access/groups): Learn how to group TofuPilot stations and members into access groups so you can scope station visibility for suppliers, departments, or production lines.
+  - [Managing Members](/docs/access/managing-members): Learn how to invite users, change roles, and remove members from your TofuPilot organization while keeping their test data traceable.
+  - [Single Sign-On](/docs/access/sso): Learn how to authenticate every TofuPilot member through your identity provider with SAML 2.0 or OIDC, so credentials never live on TofuPilot.
+  - [SCIM Provisioning](/docs/access/scim): Learn how to sync members and groups from your identity provider to TofuPilot with SCIM, so account lifecycle stays in your directory.
+  - [Two-Factor Authentication](/docs/access/two-factor-authentication): Learn how to strengthen TofuPilot sign-in with a second factor, using passkeys or authenticator-app one-time codes, and how to enforce it org-wide.
+  - [API Keys](/docs/access/api-keys): Learn how to authenticate scripts, factory stations, and CI runs with TofuPilot API keys, including how user and station keys differ in scope.
+  - [Setup Tokens](/docs/access/setup-tokens): Learn how TofuPilot setup tokens pre-authorize the CLI as a station with one-hour, single-use credentials redeemed on the test machine.
+- AI
+  - [TofuPilot AI](/docs/ai): Ask questions about your test data, run autonomous root cause analysis, and get notified the moment yield, volume, or sample behavior drifts.
+  - [MCP Server](/docs/ai/mcp): Connect Claude, Cursor, and any MCP client to your TofuPilot test data with OAuth. Read, and optionally write, runs, units, parts, batches, procedures, and stations from your AI agent.
+  - [TofuPilot Chat](/docs/ai/chat): Query runs, units, parts, yield, throughput, and measurement distributions with TofuPilot Chat, an AI assistant grounded in your organization's test data.
+  - [Root Cause Analysis](/docs/ai/root-cause-analysis): Learn how TofuPilot finds the cause behind a yield drop or measurement drift: an automatic analysis that tests hypotheses against your runs and returns a verdict.
+- Alerts
+  - [Alerts](/docs/alerts): Get notified when something's wrong with your test lines. Set up email alerts for yield drops, measurement drift, and sample failures to fix issues fast.
+  - [Configure Alerts](/docs/alerts/configure-alerts): Configure alert rules and email notifications for TofuPilot alerts. Set custom thresholds and scope rules to procedures, stations, or parts.
+- Run Analytics
+  - [Analytics](/docs/run-analytics): Learn how to track yield, run volume, unit volume, and cycle timing across every procedure, station, batch, and revision with TofuPilot Analytics.
+  - [Run Explorer](/docs/run-analytics/run-explorer): Filter, search, and drill into every test run on TofuPilot from a single table, with saved views and one-click export to CSV for reports and audits.
+  - [Log Explorer](/docs/run-analytics/log-explorer): Search every log line across every run on TofuPilot, filter by level, source, run, station, or part, and jump from a log entry to the run that produced it.
+  - [Unit Explorer](/docs/run-analytics/unit-explorer): Filter, search, and inspect every physical unit in your TofuPilot inventory, with serial-number search, metadata filters, and lifetime traceability.
+  - [Run Analytics](/docs/run-analytics/run-analytics): Learn how TofuPilot computes first-pass, second-pass, third-pass, and last-pass yield per unit per day from every run you upload.
+  - [Measurement Control](/docs/run-analytics/measurement-control): Learn how to detect drift, instability, and bottlenecks at the phase level with TofuPilot Measurement Control: Cpk, control charts, and rankings.
+  - [Phase Pareto](/docs/run-analytics/phase-pareto): Find the weak step in your test with TofuPilot Phase Pareto: rank phases by failures, retries, and wall-clock duration, then drill into the measurements behind each failure.
+  - [Insights](/docs/run-analytics/insights): Learn how to author saved visualizations of run, unit, and measurement data with TofuPilot Insights, the building blocks of every analytics report.
+  - [Reports](/docs/run-analytics/reports): Learn how to compose a dashboard from saved insights with TofuPilot Reports, including global filters, layouts, and shared time ranges.
+- CLI
+  - [CLI](/docs/cli): Learn how the TofuPilot CLI runs every subcommand for procedures, runs, units, stations, and the REST API from a single binary on macOS, Linux, and Windows.
+  - [tofupilot attachments](/docs/cli/attachments): Drive the TofuPilot two-step upload directly from the terminal to script raw multipart uploads of reports, logs, and images outside the run flow.
+  - [tofupilot batches](/docs/cli/batches): Manage TofuPilot production batches from the terminal to group units, track first-pass yield, and tie runs back to a manufacturing lot.
+  - [tofupilot config](/docs/cli/config): Inspect the local TofuPilot CLI configuration including dashboard URL, station ID, terminal and kiosk UI modes, and runtime settings.
+  - [tofupilot deploy](/docs/cli/deploy): Deploy a TofuPilot procedure from your machine: upload local source, build it in the cloud, and stream the build logs to your terminal.
+  - [tofupilot deployments](/docs/cli/deployments): List and inspect TofuPilot deployments from the terminal, with filters for environment, build status, branch, and author.
+  - [tofupilot imports](/docs/cli/imports): Import TofuPilot runs from structured or tabular files via the terminal, using inline column mappings or saved templates.
+  - [run --json Event Stream in TofuPilot](/docs/cli/json-events): Learn how to drive tofupilot run programmatically with the NDJSON event stream and stdin commands for agents and automation.
+  - [tofupilot link](/docs/cli/link): Bind a local procedure directory to a remote TofuPilot procedure so local runs can upload to the dashboard without pulling a deployment.
+  - [tofupilot login](/docs/cli/login): Authenticate the TofuPilot CLI through the browser as a user, or with a headless setup token to register an unattended factory station.
+  - [tofupilot logout](/docs/cli/logout): Clear stored TofuPilot credentials from the CLI without deleting the local data directory or any queued runs.
+  - [tofupilot logs](/docs/cli/logs): List and inspect TofuPilot run logs from the terminal, with filters for level, source file, run, unit, and time window.
+  - [tofupilot measurements](/docs/cli/measurements): List and inspect TofuPilot measurements from the terminal, with filters for value ranges, outcomes, phases, and units.
+  - [tofupilot parts](/docs/cli/parts): Create, list, update, and delete TofuPilot parts from the terminal to keep your part catalog in sync with engineering changes.
+  - [tofupilot phases](/docs/cli/phases): List and inspect TofuPilot test phases from the terminal, with filters for outcome, duration, retries, and units.
+  - [tofupilot procedures](/docs/cli/procedures): List, inspect, and manage TofuPilot procedures from the terminal to bind code repositories to test stations on the factory floor.
+  - [tofupilot pull](/docs/cli/pull): Fetch the latest TofuPilot deployments from the dashboard before running a procedure so the station executes the newest version.
+  - [tofupilot queue](/docs/cli/queue): Inspect, retry, export, or remove offline TofuPilot runs queued on the station while connectivity was down, then upload them when the network returns.
+  - [tofupilot revisions](/docs/cli/revisions): Manage TofuPilot part revisions from the terminal so engineering change orders flow into your test data without touching the dashboard.
+  - [tofupilot rollback](/docs/cli/rollback): Revert the TofuPilot CLI to the previously installed version after a bad upgrade, without touching credentials or queued runs.
+  - [tofupilot run](/docs/cli/run): Execute a TofuPilot procedure locally from a YAML file, directory, or Python entry point, with the same operator UI and dashboard streaming as a factory station.
+  - [tofupilot runs](/docs/cli/runs): List, inspect, and delete TofuPilot test runs from the terminal with JSON output for scripts and CI pipelines.
+  - [tofupilot service](/docs/cli/service): Control the TofuPilot station daemon: start, stop, and inspect status under systemd on Linux or launchd on macOS.
+  - [tofupilot stations](/docs/cli/stations): Provision, list, and decommission TofuPilot test stations from the terminal so you can scale your factory benches without leaving the CLI.
+  - [tofupilot uninstall](/docs/cli/uninstall): Remove the TofuPilot CLI binary along with queued uploads, pulled deployments, and cached configuration in one command.
+  - [tofupilot units](/docs/cli/units): Create, list, update, and delete TofuPilot units from the terminal, including serial number filtering and bulk operations.
+  - [tofupilot unlink](/docs/cli/unlink): Remove the link between a local procedure directory and its remote TofuPilot procedure by deleting tofupilot.json. Idempotent and safe to run twice.
+  - [tofupilot update](/docs/cli/update): Upgrade the TofuPilot CLI to the latest release in place, with an automatic background check that prompts when a new version ships.
+  - [tofupilot users](/docs/cli/users): List and inspect members of your TofuPilot organization from the terminal, with JSON output for audit and automation pipelines.
+  - [tofupilot versions](/docs/cli/versions): Tag and roll out specific TofuPilot procedure versions from the terminal so factory stations only run the deployment you intend.
+  - [tofupilot whoami](/docs/cli/whoami): Print the TofuPilot user or station currently authenticated on the CLI along with the active dashboard URL.
+- Deployments
+  - [Deployments](/docs/deployments): Learn how TofuPilot deployments build a procedure version from Git and ship it to one or many factory stations with status, environment, and trigger metadata.
+  - [Git](/docs/deployments/git): Learn how to connect a GitHub, GitLab, or Bitbucket repository to a TofuPilot procedure so every push produces a versioned deployment.
+  - [Environments](/docs/deployments/environments): Learn how TofuPilot tags every deployment with production, preview, or development so you can ship safely from laptop to factory.
+  - [Rolling Rollout](/docs/deployments/rolling-rollout): Learn how to promote a new TofuPilot deployment one station at a time so you can validate the build on a canary before going wide.
+  - [Instant Rollback](/docs/deployments/instant-rollback): Learn how to re-pin every production station to a previous TofuPilot deployment with no rebuild and zero downtime.
+- Import
+  - [Import](/docs/import): Learn how to import existing test results into TofuPilot from OpenHTF, WATS, STDF, ATML, CSV, and Excel files without changing your test code.
+  - [Import CSV Test Data](/docs/import/csv): Learn how to import CSV test results into TofuPilot by mapping your columns to runs, units, phases, and measurements, then saving the mapping as a preset.
+  - [Import Excel Test Data](/docs/import/excel): Learn how to import Excel test results into TofuPilot by mapping your spreadsheet columns to runs, units, phases, and measurements with a saved preset.
+  - [Import ATDF Test Data](/docs/import/atdf): Learn how to import ATDF semiconductor test datalogs into TofuPilot with automatic detection, the human-readable ASCII twin of the STDF binary format.
+  - [Import ATML Test Data](/docs/import/atml): Learn how to import ATML XML test reports into TofuPilot with automatic detection, the IEEE standard for mil/aero and ATE unit-under-test results.
+  - [Import NI TestStand Reports](/docs/import/teststand): Learn how to import NI TestStand XML reports into TofuPilot with automatic detection, turning your test executive output into runs with no mapping.
+  - [Import OpenHTF Logs](/docs/import/openhtf): Learn how to import OpenHTF JSON logs into TofuPilot with automatic format detection, turning existing test records into runs with no column mapping.
+  - [Import STDF Test Data](/docs/import/stdf): Learn how to import STDF semiconductor ATE datalogs into TofuPilot with automatic format detection, turning Teradyne and Advantest output into runs.
+  - [Import WATS WSXF Reports](/docs/import/wsxf): Learn how to import Virinco WATS reports in WSXF (XML) format into TofuPilot with automatic detection, the XML companion to the WSJF JSON format.
+  - [Import WATS WSJF Reports](/docs/import/wsjf): Learn how to import Virinco WATS reports in WSJF (JSON) format into TofuPilot with automatic detection, migrating test history with no column mapping.
+- Integrations
+  - [Integrations](/docs/integrations): Learn how to push runs, units, and yield from TofuPilot into Slack, Discord, email, Odoo, InvenTree, Linear, and custom HTTP endpoints.
+  - Workflows
+    - [Workflows](/docs/integrations/workflows): Learn how to automate actions in TofuPilot when runs, units, batches, parts, revisions, or schedules trigger events with a visual editor.
+    - [Executions](/docs/integrations/workflows/executions): Learn how to inspect every TofuPilot workflow run with per-node logs, trigger source, duration, and status from the Executions tab.
+    - [Versions](/docs/integrations/workflows/versions): Learn how TofuPilot snapshots every published workflow change as an immutable version so executions replay the exact logic that was live.
+    - [Lifecycle](/docs/integrations/workflows/lifecycle): Learn how to archive, unarchive, duplicate, and delete TofuPilot workflows, and how each status governs whether triggers fire.
+  - [Email](/docs/integrations/email): Learn how to send transactional email from a TofuPilot workflow when a trigger fires, with no SMTP credentials or DNS records on your domain.
+  - [HTTP](/docs/integrations/http): Learn how to call any external API from a TofuPilot workflow with configurable headers, body, timeout, and retries.
+  - [Discord](/docs/integrations/discord): Learn how to post messages to a Discord channel from a TofuPilot workflow using an incoming webhook URL when a trigger fires.
+  - [Linear](/docs/integrations/linear): Learn how to open Linear issues and comment on existing tickets from a TofuPilot workflow when a phase or run fails.
+  - [Odoo](/docs/integrations/odoo): Learn how to create and update Odoo records and post to chatter from a TofuPilot workflow when a test event fires.
+  - [InvenTree](/docs/integrations/inventree): Learn how to create stock items, upload test results, update stock status, transfer stock, complete build outputs, and print labels in InvenTree from TofuPilot.
+  - [Slack](/docs/integrations/slack): Learn how to post messages to a Slack channel from a TofuPilot workflow using an incoming webhook URL, with no OAuth app or token rotation.
+- Inventory
+  - [Inventory](/docs/inventory): Learn how TofuPilot Inventory anchors every run to a physical thing on the factory floor with parts, revisions, units, and batches.
+  - [Units](/docs/inventory/units): Learn how to track units under test in TofuPilot with units: serial numbers, typed metadata, attachments, sub-unit hierarchies, and reference samples.
+  - [Parts and Revisions](/docs/inventory/parts): Learn how to organize product families and their design versions with TofuPilot Parts and Revisions to compare yield across hardware generations.
+  - [Batches](/docs/inventory/batches): Learn how to group units made together with TofuPilot Batches and slice yield by manufacturing lot, build day, or contract manufacturer shipment.
+  - [Serial Numbers](/docs/inventory/serial-numbers): Learn how to auto-extract a part number from every unit's serial with an organization-wide regex in TofuPilot, so run uploads no longer need part_number.
+- Pricing
+  - [Pricing](/docs/pricing): Learn how TofuPilot pricing works across three plans: Lab for free solo use, Pro for growing teams, and Enterprise for scale and compliance.
+  - [Lab Plan](/docs/pricing/lab): Learn how the TofuPilot Lab plan works as a free single-user tier with one station, 100 monthly runs, and full framework and SDK access.
+  - [Pro Plan](/docs/pricing/pro): Learn how the TofuPilot Pro plan works at $50 per user per month, with on-demand overage on runs, attachment storage, and stations.
+  - [Enterprise Plan](/docs/pricing/enterprise): Learn how the TofuPilot Enterprise plan covers SSO, self-hosting, air-gapped activation, and SLA-backed support for larger organizations.
+  - [Billing](/docs/pricing/billing): Learn how to manage your TofuPilot subscription, update your payment method, and download invoices through the Stripe customer portal.
+  - [Invoices](/docs/pricing/invoices): Learn how to find, download, and audit Stripe invoices for your TofuPilot organization, including line items, proration, and tax handling.
+  - [Usage](/docs/pricing/usage): Learn how to track seats, stations, runs, attachment storage, and units against your TofuPilot plan quotas in the dashboard.
+  - [License](/docs/pricing/license): Learn how the TofuPilot license JWT works on self-hosted instances, including delivery modes, contents, expiry behavior, and refresh failures.
+- Security
+  - [Security](/docs/security): Learn how to audit every API request hitting your TofuPilot organization and review the data trail your security and compliance teams will ask for.
+  - [API Audit Log](/docs/security/api-audit-log): Review API activity by caller, endpoint, time, and status. Understand recorded request inputs, dashboard exports, and access permissions.
+- Self-Hosting
+  - [Self-Hosting](/docs/self-hosting): Learn how to run TofuPilot on your own servers with Docker so you keep full control over data, network, and security.
+  - [Configure](/docs/self-hosting/configure): Learn how to configure domains, SSL, authentication providers, and the Git provider for your self-hosted TofuPilot instance via the .env file.
+  - [Deploy](/docs/self-hosting/deploy): Learn how to run the deploy script, create the first admin account, and start uploading runs to your self-hosted TofuPilot instance.
+  - [Operations](/docs/self-hosting/operations): Learn how to manage your self-hosted TofuPilot instance: license, upgrades, reconfiguration, backups, and uninstall.
+  - [Upgrade](/docs/self-hosting/upgrade): Learn how to upgrade a self-hosted TofuPilot instance, back up your data first, and enable realtime views when moving from an older version.
+- Station
+  - [Station](/docs/station): Learn how to install and run the TofuPilot CLI as a station so a physical test bench can pull deployments and stream every run back to the dashboard.
+  - [Remote UI](/docs/station/remote-ui): Watch and drive a running TofuPilot station from the dashboard in real time so anyone with access can supervise procedures, answer prompts, and step in remotely.
+  - [Terminal UI](/docs/station/terminal-ui): Learn how to render the TofuPilot operator UI directly in the terminal so a station with no browser or display server can still drive procedures.
+  - [Kiosk UI](/docs/station/kiosk-ui): Learn how to boot a TofuPilot station into a full-screen browser with no toolbars or address bar so operators see only the procedure they need to run.
+  - [Launch on boot](/docs/station/launch-on-boot): Configure a TofuPilot station to start the CLI in the background as soon as the machine boots so operators can run tests without launching anything manually.
+  - [Desktop shortcut](/docs/station/desktop-shortcut): Place a TofuPilot shortcut on the station desktop so operators can launch a test run with a single click, with no terminal commands or browser bookmarks.
+  - [Auto-update](/docs/station/auto-update): Install TofuPilot CLI updates automatically on every station at launch and between tests so the fleet stays on the latest release without manual intervention.
+  - [System packages](/docs/station/system-packages): Let a TofuPilot station's deployment venvs import Python packages installed on the machine outside pip, so procedures can use native dependencies that pip cannot install.
+  - [Offline Upload Queue](/docs/station/offline-upload): Learn how the TofuPilot CLI buffers runs locally when the dashboard is unreachable so no run is lost to a transient outage on the factory floor.
